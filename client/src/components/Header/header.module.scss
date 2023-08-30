@@ -1,0 +1,30 @@
+.header {
+  padding: 10px 0;
+
+  box-shadow: (0px 2px 50px rgba(0, 0, 0, 0.15));
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: block;
+  width: 35px;
+  height: 35px;
+
+  border-radius: 50%;
+
+  background-color: var(--pink);
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  font-size: 13px;
+  font-family: "Inter", sans-serif;
+}
