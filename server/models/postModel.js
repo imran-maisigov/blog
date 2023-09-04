@@ -13,6 +13,7 @@ const postSchema = new mongoose.Schema({
   createdAT: {
     type: Date,
     default: new Date(),
+    required: true,
   },
   category: {
     type: String,
@@ -24,9 +25,25 @@ const postSchema = new mongoose.Schema({
     default: "",
     required: true,
   },
+  views: {
+    type: Number,
+    default: 0,
+  },
+  likes: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Users",
+    },
+  ],
+  username: {
+    type: String,
+    default: "",
+    required: true,
+  },
   userID: {
     type: mongoose.Types.ObjectId,
     ref: "Users",
+    required: true,
   },
 });
 

@@ -7,25 +7,30 @@ import Register from "./pages/Auth/Register";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import Post from "./pages/Post/Post";
+import AddPost from "./pages/AddPost/AddPost";
 
 const App = () => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     const getUser = async () => {
-      const res = await axios.get("http://localhost:5000/api/getUser", {
-        withCredentials: true,
-      });
+      const token = localStorage.getItem("token");
 
-      if (res.data) {
-        dispatch({
-          type: "AUTH",
-
-          payload: {
-            user: res.data.user,
-            token: res.data.accessToken,
-          },
+      if (token) {
+        const res = await axios.get("http://localhost:5000/api/getUser", {
+          withCredentials: true,
         });
+
+        if (res.data) {
+          dispatch({
+            type: "AUTH",
+
+            payload: {
+              user: res.data.user,
+              token: res.data.accessToken,
+            },
+          });
+        }
       }
     };
 
@@ -42,6 +47,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/addPost" element={<AddPost />} />
             <Route path="/detail/:id" element={<Post />} />
           </Routes>
         </div>

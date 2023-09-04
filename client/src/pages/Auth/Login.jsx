@@ -36,6 +36,7 @@ const Login = () => {
       );
 
       if (res.data) {
+        localStorage.setItem("token", res.data.accessToken);
         dispatch({
           type: "AUTH",
           payload: {
@@ -55,7 +56,7 @@ const Login = () => {
   return (
     <Card className={cls.auth}>
       <Title type="h1">Войти</Title>
-      <Form className={cls.form_top} onSubmit={submitForm}>
+      <Form onSubmit={submitForm}>
         <Input type="text" placeholder="Имя" name="username" />
         <Input type="text" placeholder="Пароль" name="password" />
 

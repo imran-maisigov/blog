@@ -42,7 +42,8 @@ const Register = () => {
   return (
     <Card className={cls.auth}>
       <Title type="h1">Регистрация</Title>
-      <Form className={cls.form_top} onSubmit={submitForm}>
+
+      <Form onSubmit={submitForm}>
         <Input type="text" placeholder="Имя" name="username" />
         <Input type="text" placeholder="Пароль" name="password" />
         <Input type="text" placeholder="Пароль" name="rePassword" />
